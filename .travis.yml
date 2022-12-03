@@ -16,13 +16,13 @@ before_script:
 script:
         #  - docker --version # print the version for logging
   - docker build -t udagram-api-feed ./udagram-api-feed # build udagram backend feed
-  - docker tag udagram-api-feed karim3032/udagram-api-feed:v4 # tag the image
+  - docker tag udagram-api-feed karim3032/udagram-api-feed:v4a  # tag the image
   - docker build -t udagram-api-user ./udagram-api-user # backend user
-  - docker tag udagram-api-user karim3032/udagram-api-user:v4 # tagging
+  - docker tag udagram-api-user karim3032/udagram-api-user:v4a  # tagging
   - docker build -t udagram-frontend ./udagram-frontend # build frontend server ionic
-  - docker tag udagram-frontend karim3032/udagram-frontend:v4 # tagging
+  - docker tag udagram-frontend karim3032/udagram-frontend:local # tagging
   - docker build -t udagram-reverseproxy ./udagram-reverseproxy # build reverse proxy nginx
-  - docker tag udagram-reverseproxy karim3032/udagram-reverseproxy:v4 # tagging
+  - docker tag udagram-reverseproxy karim3032/udagram-reverseproxy:v4a  # tagging
 
 
 after_success:
