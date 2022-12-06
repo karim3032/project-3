@@ -1,0 +1,58 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: backend-feed
+  name: backend-feed
+spec:
+  ports:
+  - name: "8080"
+    port: 8080
+    targetPort: 8080
+    protocol: TCP 
+  selector:
+    service: backend-feed
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: backend-user
+  name: backend-user
+spec:
+  ports:
+  - name: "8080"
+    port: 8080
+    targetPort: 8080
+    protocol: TCP 
+  selector:
+    service: backend-user
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  labels:
+    run: frontend
+spec:
+  ports:
+  - port: 8100
+    targetPort: 80
+    protocol: TCP
+  selector:
+    run: frontend
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: reverseproxy
+  name: reverseproxy
+spec:
+  ports:
+  - name: "8080"
+    port: 8080
+    targetPort: 8080
+    protocol: TCP
+  selector:
+    service: reverseproxy
