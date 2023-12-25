@@ -3,11 +3,12 @@ kind: Service
 metadata:
   labels:
     service: udagram-api-feed
-  name: udagram-api-feed-svc
+  name: api-feed-svc
 spec:
   ports:
-  - name: "8100"
-    port: 8100
-    targetPort: 8100
+  - name: "8080"
+    port: 8080
+    targetPort: 8080
+    protocol: TCP 
   selector:
-    service: udagram-api-feed
+    service: api-feed  # Corrected label to match your deployment labels

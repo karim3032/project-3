@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: api-user
+  name: api-user
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      service: api-user
+  template:
+    metadata:
+      labels:
+        service: api-user
+    spec:
+      containers:
+      - image: karim2324/udagram-api-user:v1
+        name: api-user
+        imagePullPolicy: Always
+        ports: 
+        - containerPort: 8080
+        envFrom:
+          - secretRef:
+              name: env-secret
+          - configMapRef:
+              name: env-configmap
+      restartPolicy: Always
